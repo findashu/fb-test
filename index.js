@@ -6,6 +6,8 @@ const PORT = process.env.PORT || 5000
 app.use(bodyParser.json());
 
 app.get('/', function(req,res) {
+    console.log(req.url)
+
     if(req.query.hub.verify_token == 'abc123'){
         res.status(200).json({'verify':true});
     }else {
