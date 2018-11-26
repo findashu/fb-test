@@ -7,7 +7,7 @@ app.use(bodyParser.json());
 
 app.get('/', function(req,res) {
     console.log(req.url)
-
+    console.log(req.query.hub.verify_token);
     if(req.query.hub.verify_token == 'abc123'){
         res.status(200).json({'verify':true});
     }else {
