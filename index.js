@@ -6,12 +6,15 @@ const PORT = process.env.PORT || 5000
 app.use(bodyParser.json());
 
 app.get('/', function(req,res) {
-    if(req.body.verify_Token == 'abc@123'){
-        res.send('verified');
+    if(req.query.hub.verify_token == 'abc123'){
+        res.status(200).json({'verify':true});
     }else {
+        console.log('Else', req.query.hub.verify_token)
         res.send(req.body);
     }
 
 })
 
 app.listen(PORT);
+
+// ?hub.mode= subscribe&hub.challenge= 1965077546&hub.verify_token=abc%40123" host=vast-journey-78218.herokuapp.com request_id=f4ddd06e-9eb2-4446-93c2-5c8679149da4 fwd="69.171.251.20" dyno=web.1 connect=0ms service=18ms status=200 bytes=207 protocol=https
