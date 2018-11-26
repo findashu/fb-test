@@ -7,9 +7,9 @@ app.use(bodyParser.json());
 
 app.get('/', function(req,res) {
     console.log(req.url)
-    console.log(req.query.hub.verify_token);
+    //console.log(req.query.hub.verify_token);
     if(req.query['hub.verify_token'] == 'abc123'){
-        res.status(200).json({'verify':true});
+        res.status(200).send(req.query['hub.challenge']);
     }else {
         console.log('Else', req.query.hub.verify_token)
         res.send(req.body);
