@@ -29,8 +29,9 @@
          }(document, 'script', 'facebook-jssdk'));
     
         function myFacebookLogin(response) {
-            console.log('Successfully Login ', response)
-            FB.login(function(){}, {scope :'manage_pages'});
+            FB.login(function(response){
+                console.log('Successfully Login ', response)
+            }, {scope :'manage_pages'});
         }
     </script>
 
