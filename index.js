@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 5000
 
+app.set('views', __dirname+'/views');
+app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 
 app.get('/', function(req,res) {
@@ -15,6 +17,10 @@ app.get('/', function(req,res) {
         res.send(req.body);
     }
 
+})
+
+app.get('/platform', (req,res) => {
+    res.render('platform',{})
 })
 
 app.listen(PORT);
